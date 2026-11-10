@@ -37,14 +37,13 @@ function slotsFor(date){
 }
 function renderSlots(){
   const box=$("#slots");if(!st.date){box.innerHTML="";$("#slotHint").textContent="Elige una fecha.";return}
-  const now=new Date(),base=pd(st.date),z=zone(st.zone);
+  const now=new Date(),base=pd(st.date);
   box.innerHTML=slotsFor(st.date).map(m=>{
     const t=new Date(base.getTime()+m*60000),past=t<new Date(now.getTime()+30*60000);
-    const free=z.seats-occupied(st.date,st.zone,m),dis=past||free<st.party;
-    return`<button type="button" data-m="${m}" ${dis?"disabled":""} class="${st.time===m?"on":""}" title="${dis?"No disponible":free+" plazas libres"}">${hm(m)}</button>`}).join("");
-  const any=$$("#slots button:not(:disabled)").length;
-  $("#slotHint").textContent=any?"Mostramos solo horas con plaza para tu grupo.":"Sin disponibilidad ese día en esta zona. Prueba otra zona o fecha.";
-  if(st.time!==null&&!$(`#slots button[data-m="${st.time}"]:not(:disabled)`))st.time=null;
+    return '<button type="button" data-m="'+m+'" '+(past?"disabled":"")+' class="'+(st.time===m?"on":"")+'">'+hm(m)+'</button>';
+  }).join("");
+  $("#slotHint").textContent="Selecciona una hora. El equipo confirmará la disponibilidad por WhatsApp."; 
+  if(st.time!==null&&!$("#slots button[data-m=\""+st.time+"\"]:not(:disabled)").length)st.time=null;
   summary();
 }
 function summary(){
@@ -65,15 +64,15 @@ const code=()=>{const a="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";return"VH-"+Array.fro
 $("#form").onsubmit=e=>{
   e.preventDefault();const err=$("#err");err.textContent="";
   const name=$("#name").value.trim(),tel=$("#tel").value.trim(),email=$("#email").value.trim();
-  if(!st.date||st.time===null)return err.textContent="Elige fecha y hora.";
-  if(name.length<2)return err.textContent="Escribe tu nombre.";
-  if(!/^\+?[\d\s]{9,15}$/.test(tel))return err.textContent="Teléfono no válido.";
-  if(email&&!/^\S+@\S+\.\S+$/.test(email))return err.textContent="Email no válido.";
-  if(!$("#legal").checked)return err.textContent="Debes aceptar la confirmación de mayoría de edad.";
-  const list=load();
-  if(zone(st.zone).seats-occupied(st.date,st.zone,st.time,list)<st.party){renderSlots();return err.textContent="Ese hueco se acaba de llenar. Elige otra hora."}
-  const b={id:code(),date:st.date,start:st.time,party:st.party,zone:st.zone,name,tel,email,occ:$("#occ").value,notes:$("#notes").value.trim(),status:"confirmada",created:Date.now()};
-  list.push(b);save(list);last=b;confirmModal(b);$("#form").reset();st.time=null;renderSlots();
+  if(!st.date||st.time===null)return err.textContent="Elige fecha y hora."; 
+  if(name.length<2)return err.textContent="Escribe tu nombre."; 
+  if(!/^\\+?[\\d\\s]{9,15}$/.test(tel))return err.textContent="Teléfono no válido."; 
+  if(email&&!/^\\S+@\\S+\\.\\S+$/.test(email))return err.textContent="Email no válido."; 
+  if(!$("#legal").checked)return err.textContent="Debes confirmar que todos los asistentes son mayores de 18 años."; 
+  const f=pd(st.date).toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
+  const msg="Hola Valhalla Rivas. Quiero solicitar una mesa para "+st.party+" personas el "+f+" a las "+hm(st.time)+"h, en "+zone(st.zone).name+". Nombre: "+name+". Teléfono: "+tel+"."+(email?" Email: "+email:"")+" Ocasión: "+$("#occ").value+". Notas: "+($("#notes").value.trim()||"Sin notas")+". ¿Podéis confirmarme disponibilidad?";
+  $("#summary").textContent="Abriendo WhatsApp para enviar tu solicitud. La mesa no queda confirmada hasta recibir respuesta del local."; 
+  window.open("https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent(msg),"_blank","noopener");
 };
 function confirmModal(b){
   const f=pd(b.date).toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
