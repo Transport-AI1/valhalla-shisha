@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Valhalla Shisha · Cachimbas en Rivas-Vaciamadrid</title>
+<meta name="description" content="Valhalla Shisha, tu lounge de cachimbas en Rivas-Vaciamadrid. Reserva mesa online en segundos.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head><body>
+<div id="age" class="modal show"><div class="box"><h2>¿Eres mayor de 18 años?</h2><p>La venta y consumo de tabaco está prohibida a menores de edad.</p><div class="row"><button class="btn" id="ageYes">Sí, soy mayor de 18</button><a class="btn ghost" href="https://www.google.com">No</a></div></div></div>
+
+<header id="top"><a class="logo" href="#inicio">⚔ VALHALLA<small>SHISHA</small></a>
+<nav id="nav"><a href="#nosotros">Nosotros</a><a href="#experiencia">Experiencia</a><a href="#carta">Carta</a><a href="#ubicacion">Dónde</a><a href="#faq">FAQ</a><a class="btn sm" href="#reservar">Reservar</a></nav>
+<button id="burger" aria-label="Menú">☰</button></header>
+
+<section id="inicio" class="hero"><div class="embers"></div><div class="wrap">
+<p class="eyebrow">Lounge de cachimbas · <span data-c="city"></span></p>
+<h1>Entra en el salón<br>de los elegidos</h1>
+<p class="lead">Humo denso, buena compañía y un ambiente que no vas a querer abandonar. Reserva tu mesa en menos de un minuto.</p>
+<div class="row"><a class="btn" href="#reservar">Reservar mesa</a><a class="btn ghost" href="#carta">Ver carta</a></div></div></section>
+
+<section id="nosotros"><div class="wrap"><h2>Más que una cachimba</h2><p class="sub">Un rincón de Rivas pensado para desconectar.</p>
+<div class="grid3">
+<article class="card"><span>🔥</span><h3>Montaje cuidado</h3><p>Cachimbas bien cargadas, carbón de calidad y cambio de brasas a tu ritmo.</p></article>
+<article class="card"><span>🛋</span><h3>Ambiente lounge</h3><p>Sofás, luz cálida y música para charlar con calma entre amigos o en pareja.</p></article>
+<article class="card"><span>🎉</span><h3>Grupos y celebraciones</h3><p>Reservado para cumpleaños, quedadas y eventos. Consúltanos tu plan.</p></article>
+</div></div></section>
+
+<section id="experiencia" class="alt"><div class="wrap"><h2>Elige tu zona</h2><p class="sub">Tres espacios, tres formas de disfrutar.</p><div class="grid3" id="zones"></div></div></section>
+
+<section id="carta"><div class="wrap"><h2>La carta</h2><p class="sub">Selección de la casa. <em>Precios y sabores sujetos a disponibilidad.</em></p>
+<div class="tabs" id="tabs"></div><div class="menu" id="menu"></div></div></section>
+
+<section id="reservar" class="alt"><div class="wrap"><h2>Reserva tu mesa</h2><p class="sub">Confirmación inmediata con código de reserva.</p>
+<div class="book">
+<div class="panel"><h3>1 · Cuándo y cuántos</h3>
+<label>Fecha<input type="date" id="date"></label>
+<label>Personas<div class="stepper"><button type="button" id="minus">−</button><output id="party">2</output><button type="button" id="plus">+</button></div></label>
+<label>Zona<select id="zone"></select></label>
+<h3>2 · Hora</h3><div id="slots" class="slots"></div><p class="hint" id="slotHint"></p></div>
+<form class="panel" id="form" novalidate><h3>3 · Tus datos</h3>
+<label>Nombre<input id="name" required autocomplete="name"></label>
+<label>Teléfono<input id="tel" type="tel" required autocomplete="tel" placeholder="600 000 000"></label>
+<label>Email (opcional)<input id="email" type="email" autocomplete="email"></label>
+<label>Ocasión<select id="occ"><option>Quedada con amigos</option><option>Cumpleaños</option><option>Cita</option><option>Evento / grupo</option><option>Otra</option></select></label>
+<label>Notas (sabores, alergias…)<textarea id="notes" rows="2"></textarea></label>
+<label class="chk"><input type="checkbox" id="legal"> Confirmo que todos los asistentes son mayores de 18 años y acepto el tratamiento de mis datos para gestionar la reserva.</label>
+<div class="summary" id="summary">Selecciona fecha y hora.</div>
+<button class="btn full" id="submit">Confirmar reserva</button><p class="err" id="err"></p></form>
+</div></div></section>
+
+<section id="ubicacion"><div class="wrap"><h2>Dónde estamos</h2><div class="loc">
+<div><p><b>Dirección</b><br><span data-c="address"></span>, <span data-c="city"></span></p><p><b>Teléfono</b><br><a data-tel></a></p><p><b>Horario</b></p><ul id="hours"></ul><div class="row"><a class="btn" data-wa>WhatsApp</a><a class="btn ghost" data-map target="_blank" rel="noopener">Cómo llegar</a></div></div>
+<iframe id="map" title="Mapa" loading="lazy"></iframe></div></div></section>
+
+<section id="faq" class="alt"><div class="wrap narrow"><h2>Preguntas frecuentes</h2>
+<details><summary>¿Hay que reservar?</summary><p>Recomendado, sobre todo viernes y sábados. Sin reserva depende del aforo.</p></details>
+<details><summary>¿Cuánto tiempo dura mi mesa?</summary><p>Cada reserva cuenta con 2 horas de mesa; si hay hueco puedes alargarla.</p></details>
+<details><summary>¿Puedo cancelar o cambiar?</summary><p>Sí, avísanos por teléfono o WhatsApp indicando tu código de reserva.</p></details>
+<details><summary>¿Se admiten menores?</summary><p>No. El acceso es solo para mayores de 18 años.</p></details>
+<details><summary>¿Grupos grandes?</summary><p>Hasta <span data-c="maxParty"></span> personas online. Para más, escríbenos por WhatsApp.</p></details></div></section>
+
+<footer><p>⚔ <b>Valhalla Shisha</b> · <span data-c="city"></span></p><p class="small">Fumar perjudica seriamente la salud. Prohibido a menores de 18 años. · <a href="#admin" id="adminLink">Gestión</a></p><p class="small">Demo de diseño: datos marcados con [ ] pendientes de completar.</p></footer>
+
+<div id="ok" class="modal"><div class="box"><h2>¡Reserva confirmada!</h2><p id="okTxt"></p><div class="code" id="okCode"></div><div class="row"><a class="btn" id="okWa" target="_blank" rel="noopener">Enviar por WhatsApp</a><button class="btn ghost" id="okIcs">Añadir al calendario</button><button class="btn ghost" id="okClose">Cerrar</button></div></div></div>
+
+<div id="admin" class="modal"><div class="box wide"><div class="row between"><h2>Panel de reservas</h2><button class="btn ghost sm" id="admClose">✕</button></div>
+<div id="admLogin"><label>PIN<input id="pin" type="password"></label><button class="btn" id="pinGo">Entrar</button></div>
+<div id="admBody" hidden><div class="row"><input type="date" id="admDate"><button class="btn ghost sm" id="admAll">Ver todas</button><button class="btn ghost sm" id="admCsv">Exportar CSV</button><button class="btn ghost sm" id="admNew">+ Manual</button></div><div class="kpis" id="kpis"></div><div class="tw"><table id="tbl"></table></div></div></div></div>
+<script src="js/config.js"></script><script src="js/app.js"></script></body></html>
