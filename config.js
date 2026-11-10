@@ -1,40 +1,39 @@
-/* ===== CONFIGURACIÓN — edita aquí los datos reales del local ===== */
+/* Datos públicos localizados en fuentes del establecimiento y directorios locales.
+   Carta y aforos exactos: pendientes de confirmación directa. */
 const CONFIG = {
-  name: "Valhalla Shisha",
+  name: "Valhalla Rivas",
   city: "Rivas-Vaciamadrid, Madrid",
-  address: "[Dirección del local]",          // TODO: completar
-  phone: "[+34 000 000 000]",                // TODO: completar
-  whatsapp: "34000000000",                   // solo números con prefijo país
-  instagram: "",                             // ej: https://instagram.com/valhallashisha
-  mapQuery: "Valhalla Shisha Rivas-Vaciamadrid",
-  adminPin: "1234",                          // cambiar antes de producción
+  address: "Av. Aurelio Álvarez, 4, Local 15, 28521",
+  phone: "+34 655 80 64 53",
+  whatsapp: "34655806453",
+  instagram: "https://www.instagram.com/valhallarivas/",
+  email: "valhallarivas@hotmail.com",
+  mapQuery: "Valhalla Rivas, Av. Aurelio Álvarez 4 Local 15, Rivas-Vaciamadrid",
+  adminPin: "1234", // Demo: cambiar y proteger con backend antes de producción
   maxParty: 14, stayMinutes: 120, slotStep: 30, daysAhead: 60,
-  // Horario DEMO (0=domingo ... 6=sábado). Cierre >24 = madrugada del día siguiente
-  hours: { 0:[17,25], 1:[17,25], 2:[17,25], 3:[17,25], 4:[17,25], 5:[17,27], 6:[17,27] },
+  // Horario publicado en la ficha de Google; confirmar festivos y cambios estacionales.
+  hours: { 0:[19,25], 1:[19,25], 2:[19,25], 3:[19,25], 4:[19,25], 5:[19,25], 6:[19,25] },
+  // Las capacidades son provisionales para la demo; el local debe confirmar aforos.
   zones: [
-    { id:"sala",    name:"Sala Lounge",     seats:30, desc:"Sofás y mesas bajas, ambiente tenue." },
-    { id:"terraza", name:"Terraza",         seats:20, desc:"Al aire libre, ideal en noches templadas." },
-    { id:"vip",     name:"Reservado Odín",  seats:10, desc:"Zona privada para grupos y celebraciones." }
+    { id:"sala", name:"Sala lounge", seats:999, desc:"Interior con sofás y ventanales circulares." },
+    { id:"terraza", name:"Terraza", seats:999, desc:"Espacio exterior a pie de calle." },
+    { id:"vip", name:"Terraza superior", seats:999, desc:"Terraza de la planta superior, cubierta y climatizada en invierno." }
   ],
-  // Carta DEMO: precios orientativos, sustituir por los reales
   menu: {
     "Cachimbas": [
-      ["Cachimba clásica","Sabor a elegir, mezcla de la casa","—"],
-      ["Cachimba premium","Tabaco premium y base de fruta","—"],
-      ["Cachimba en fruta","Servida en piña, sandía o pomelo","—"],
-      ["Cachimba sin nicotina","Alternativa herbal","—"]
+      ["Cachimbas de sabores","Selección de sabores disponibles en el local","Desde 15 €*"]
     ],
-    "Sabores": [
-      ["Frutales","Sandía, melocotón, mango, uva, limón","—"],
-      ["Mentolados","Menta, hielo, sandía-menta","—"],
-      ["Dulces","Vainilla, chicle, tarta de manzana","—"],
-      ["Mezclas de la casa","Combinaciones exclusivas Valhalla","—"]
+    "Cócteles y copas": [
+      ["Cócteles","Coctelería y combinados","Consultar"],
+      ["Mojitos","Disponibilidad según carta del día","Consultar"]
     ],
-    "Bebidas": [
-      ["Tés e infusiones","Té moruno, té verde, infusiones","—"],
-      ["Refrescos y zumos","Selección habitual","—"],
-      ["Granizados y batidos","Fríos y sin alcohol","—"],
-      ["Cócteles","Consultar disponibilidad","—"]
+    "Batidos y smoothies": [
+      ["Milkshake de Lotus","Uno de los batidos destacados en sus publicaciones","Consultar"],
+      ["Smoothie de frutos rojos","Publicado por el establecimiento","Consultar"],
+      ["Smoothie de piña y mango","Publicado por el establecimiento","Consultar"]
+    ],
+    "Tés": [
+      ["Tés e infusiones","Una opción para acompañar la experiencia","Consultar"]
     ]
   }
 };
