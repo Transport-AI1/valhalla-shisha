@@ -27,3 +27,14 @@ footer{text-align:center;padding:55px 20px 38px;border-top:1px solid #ffffff10;b
 @media(max-width:900px){header{padding:0 24px}nav{gap:16px}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{background-position:58% center}}
 @media(max-width:700px){header{height:72px}#burger{display:block}nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#0b0c0f;padding:10px 24px 22px;border-bottom:1px solid var(--line)}nav.open{display:flex}nav a{padding:13px;width:100%;text-align:center}.hero{min-height:760px;height:92svh;padding-top:100px;background-image:linear-gradient(90deg,rgba(5,6,8,.88),rgba(5,6,8,.58)),linear-gradient(0deg,#08090b 0%,transparent 45%),url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80');background-position:58% center}h1{font-size:clamp(3.5rem,16vw,5.6rem)}.lead{font-size:1rem}.hero .wrap:after{margin-top:58px}section{padding:78px 0}.wrap{width:min(100% - 36px,1160px)}.grid3{grid-template-columns:1fr}.card{min-height:unset;padding:27px}.book,.loc{grid-template-columns:1fr;gap:16px}.panel{padding:23px}.loc{margin-top:30px}.loc iframe{min-height:300px}.menu{padding:6px 20px}.item{padding:17px 0}.box{padding:27px 20px}.box .row{gap:9px}.box .btn{padding:0 15px;font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Fotografía y bloque editorial del establecimiento */
+.photo-feature{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,70px);align-items:center;margin:0 auto 50px;max-width:1050px}
+.photo-feature img{display:block;width:100%;aspect-ratio:1.38;object-fit:cover;border:1px solid rgba(214,180,119,.35);box-shadow:0 28px 70px #0008}
+.photo-feature>div{padding:12px 0}
+.photo-feature .eyebrow{color:var(--gold2);font-size:.68rem;letter-spacing:.22em}
+.photo-feature h3{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:18px 0;color:var(--text)}
+.photo-feature p{color:var(--muted);line-height:1.85;margin-bottom:26px}
+#zones .card{min-height:unset}
+#zones .cap{display:none}
+@media(max-width:700px){.photo-feature{grid-template-columns:1fr;gap:22px}.photo-feature img{aspect-ratio:1.25}.photo-feature>div{padding:0 4px}}
